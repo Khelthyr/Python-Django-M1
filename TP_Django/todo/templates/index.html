@@ -4,12 +4,33 @@
 <head>
         <meta charset="utf-8">
         <title>Todo Application</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
 </head>
 <body>
     <div class="form-group">
       <h1>To-Do <small>List</small></h1>
-
+      <form action=""  method="POST">
+        <label for="name">Task Content :</label>
+        <input type="text" id="content" name="content" size="60">
+        <input type="submit" value="Add Task">
+      </form>
+      
+      <hr>
+      {% for task in task_list %}
+        {% if task.is_done %}
+        <div class="task-done">
+          {{ task.content }} <br>
+        </div>
+          
+          <hr>
+        {% else %}
+          {{ task.content }} <br>
+          <img src="{% static '/done.png' %}"> Done <br>
+          <img src="{% static '/delete.gif' %}"> Delete <br>
+          Modify<br>
+          <hr>
+        {% endif %}
+      {% endfor %}
 
       <!-- des choses a ajouter ici -->
 

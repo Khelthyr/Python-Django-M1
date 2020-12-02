@@ -8,7 +8,7 @@ from django.utils import timezone
 class Task(models.Model):
     content = models.CharField(max_length=200)
     is_done = models.BooleanField()
-    created_date = models.DateTimeField('date published')
+    created_date = models.DateField('date published', auto_now_add=True)
 
     def __str__(self):
         return self.content
