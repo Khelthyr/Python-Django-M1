@@ -9,7 +9,8 @@
 <body>
     <div class="form-group">
       <h1>To-Do <small>List</small></h1>
-      <form action=""  method="POST">
+      <form method="POST">
+        {% csrf_token %}
         <label for="name">Task Content :</label>
         <input type="text" id="content" name="content" size="60">
         <input type="submit" value="Add Task">
@@ -25,9 +26,9 @@
           <hr>
         {% else %}
           {{ task.content }} <br>
-          <img src="{% static '/done.png' %}"> Done <br>
-          <img src="{% static '/delete.gif' %}"> Delete <br>
-          Modify<br>
+          <img src="{% static '/done.png' %}"> <a href="">Done</a>
+          <img src="{% static '/delete.gif' %}"> <a href=" {% url 'delete' task.id %}">Delete</a>
+          <a href="">Modify</a><br>
           <hr>
         {% endif %}
       {% endfor %}
