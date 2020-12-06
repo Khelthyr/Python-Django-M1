@@ -19,16 +19,17 @@
       <hr>
       {% for task in task_list %}
         {% if task.is_done %}
-        <div class="task-done">
-          {{ task.content }} <br>
-        </div>
-          
+          <div class="task-done">
+            {{ task.content }} <br>
+          </div>
+          <img src="{% static '/delete.gif' %}"> <a href=" {% url 'delete' task.id %}">Delete</a>
+          <a href="{% url 'edit' task.id %}">Modify</a><br>
           <hr>
         {% else %}
           {{ task.content }} <br>
           <img src="{% static '/done.png' %}"> <a href="">Done</a>
           <img src="{% static '/delete.gif' %}"> <a href=" {% url 'delete' task.id %}">Delete</a>
-          <a href="">Modify</a><br>
+          <a href="{% url 'edit' task.id %}">Modify</a><br>
           <hr>
         {% endif %}
       {% endfor %}
